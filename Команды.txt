@@ -1,0 +1,115 @@
+User.objects.create(first_name = 'Oleg', last_name = 'Egorov', username = 'legovery') # создать пользователя
+User.objects.create(first_name = 'Наташа', last_name = 'Коралёва', username = 'Твой сверчок') # создать пользователя
+
+a1 = User.objects.get(username = 'legovery').id # получить id
+a2 = User.objects.get(username = 'Твой сверчок').id # получить id
+Author.objects.create(user_id = a1) # создать автора
+Author.objects.create(user_id = a2) # создать автора
+
+# Создать категории
+Category.objects.create(name = 'Игры')
+Category.objects.create(name = 'Музыка')
+Category.objects.create(name = 'Интернет')
+Category.objects.create(name = 'Искусство')
+
+# Создание статей
+a1 = Author.objects.get(pk=1)
+a2 = Author.objects.get(pk=2)
+
+Post.objects.create(content_type = 'Статья', author = a1, title = 'Thorin составил свой список лучших игроков в CS c 2012 по 2023-й', text = '''Киберспортивный журналист Данкан Thorin Шилдс назвал лучших игроков в CS:GO по годам. Свою версию топа британец представил в X (бывшая Twitter). Единственным расхождением с вариантом от HLTV.org оказался выбор в 2020-м — Шилдс назвал лучшим в этом сезоне Александра s1mple Костылева, а не Матье ZywOo Эрбо.
+Данкан Thorin Шилдс
+Киберспортивный журналист
+2012 — GeT_RiGhT
+2013 — GeT_RiGhT
+2014 — GeT_RiGhT
+2015 — olofmeister
+2016 — coldzera
+2017 — coldzera
+2018 — s1mple
+2019 — ZywOo
+2020 — s1mple
+2021 — s1mple
+2022 — s1mple
+2023 — ZywOo
+''')
+
+Post.objects.create(content_type = 'Новость', author = a1, title = 'Cloud9 выбила BetBoom Team из IEM Katowice 2024', text = '''Команда Владислава nafany Горшкова покинула чемпионат. Cloud9 прошла в следующий раунд Play-In, где поборется с Virtus.pro за квоту в групповую стадию чемпионата. Начало матча запланировано на 2 февраля, 18:30 мск.
+
+Стадия Play-In на IEM Katowice 2024 проходит с 31 января по 2 февраля. Команды разыгрывают восемь слотов на групповом этапе соревнования. Расписание и результаты чемпионата можно отслеживать в <a href="репортаже">https://www.cybersport.ru/tournaments/cs2/iem-katowice-2024?bracket=10008568</a>.''')
+
+Post.objects.create(content_type = 'Статья', author = a2, title = 'Почему люди прошлого кажутся нам такими некрасивыми?', text = '''• Эволюция канонов женской красоты менялась на протяжении веков.
+
+• В эпоху Средневековья ценилась светлая кожа и высокий выпуклый лоб, что требовало сбривания бровей.
+
+• В эпоху Возрождения идеалом считалось все, что выглядело здоровым, включая покатые плечи и небольшой животик.
+
+• В XVII веке идеал красоты достиг размера plus size, с пышными формами и роскошными нарядами.
+
+• В эпоху рококо модницы предпочитали юность, игривый румянец и тонкую талию, с акцентом на кокетство и естественность.
+
+• В XIX веке женщины отказались от корсета и вдохновлялись античными идеалами, с акцентом на свободу и форму бюста.
+
+• В ХХ веке в моду вошли пышный бюст, тонкая талия и выразительные бедра, с акцентом на истинную женственность и удобство.
+''')
+
+PostCategory.objects.create(post_id = 1, category_id = 1) # Первый пост с категорией 'Игры'
+PostCategory.objects.create(post_id = 2, category_id = 1) # Второй пост с категорией 'Игры'
+PostCategory.objects.create(post_id = 2, category_id = 2) # и также с категорией 'Интернет'
+PostCategory.objects.create(post_id = 3, category_id = 4) # Третий пост с категорией 'Искусство'
+
+# Создание комментариев
+Comment.objects.create(post_id = 1, user_id = 2, text = 'Мне казалось Саша чаще был лучшим игроком года, ахаха')
+Comment.objects.create(post_id = 2, user_id = 2, text = 'Блин, всё пропустила...(')
+Comment.objects.create(post_id = 2, user_id = 1, text = 'Опять работа крадёт время?)')
+Comment.objects.create(post_id = 2, user_id = 2, text = 'Даа...(')
+Comment.objects.create(post_id = 3, user_id = 1, text = 'Занятно.')
+
+# Оцениваем комментарии
+com1 = Comment.objects.get(id=1)
+com2 = Comment.objects.get(id=2)
+com3 = Comment.objects.get(id=3)
+com4 = Comment.objects.get(id=4)
+com5 = Comment.objects.get(id=5)
+com1.like()
+com1.like()
+com2.dislike()
+com3.like()
+com5.like()
+
+# Оцениваем посты
+post1 = Post.objects.get(id=1)
+post2 = Post.objects.get(id=2)
+post3 = Post.objects.get(id=3)
+post1.like()
+post1.like()
+post2.like()
+post3.like()
+post3.like()
+
+# Обновляем рейтинг авторов
+author1 = Author.objects.get(id=1)
+author2 = Author.objects.get(id=2)
+author1.update_rating()
+author2.update_rating()
+
+# Вывод лучшего автора (как я понял, нужно вывести все поля связанные с пользователем у которого лучший рейтинг, но не знаю как)
+best_author = Author.objects.all().order_by('-rating')[0]
+user_username = User.objects.get(pk=best_author.id)
+print(f'Best author: {user_username.username} | Rating: {best_author.rating}')
+
+# Вывод лучшего поста
+best_post = Post.objects.all().order_by('-rating')[0]
+best_post = Post.objects.get(id=best_post.id)
+username = User.objects.get(pk=best_post.author_id)
+print(f'''Дата добавления: {best_post.datetime}
+Автор: {username.username}
+Рейтинг: {best_post.rating}
+
+{best_post.title}
+{best_post.preview(id=best_post.id)}
+''')
+
+# Вывод всех комментариев
+comment_under_post = Comment.objects.all().order_by('datetime').filter(post_id=2)
+for comment in comment_under_post:
+    print(comment.text)
