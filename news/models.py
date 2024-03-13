@@ -109,25 +109,3 @@ class Comment(models.Model):
     def dislike(self):
         rating = Comment.rating - 1
         rating.save()
-
-if __name__ == '__main__':
-    Post().create_post(content_type = 'Новость', author = 1, category = 'Игры',
-                       title = 'Thorin составил свой список лучших игроков в CS c 2012 по 2023-й', 
-text = """
-Киберспортивный журналист Данкан Thorin Шилдс назвал лучших игроков в CS:GO по годам. Свою версию топа британец представил в X (бывшая Twitter). Единственным расхождением с вариантом от HLTV.org оказался выбор в 2020-м — Шилдс назвал лучшим в этом сезоне Александра s1mple Костылева, а не Матье ZywOo Эрбо.
-
-Данкан Thorin Шилдс
-Киберспортивный журналист
-2012 — GeT_RiGhT
-2013 — GeT_RiGhT
-2014 — GeT_RiGhT
-2015 — olofmeister
-2016 — coldzera
-2017 — coldzera
-2018 — s1mple
-2019 — ZywOo
-2020 — s1mple
-2021 — s1mple
-2022 — s1mple
-2023 — ZywOo
-""")
