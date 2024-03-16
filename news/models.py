@@ -52,11 +52,11 @@ class Post(models.Model):
                                   choices = CONTENT_TYPE,
                                   default = article)
     author = models.ForeignKey("Author", on_delete = models.CASCADE)
-    datetime = models.DateTimeField()
+    datetime = models.DateTimeField(auto_now_add=True)
     category = models.ManyToManyField("Category")
     title = models.TextField()
     text = models.TextField()
-    rating = models.FloatField()
+    rating = models.FloatField(default=0)
 
     def set_now_time(self):
         return time.strftime('%Y-%m-%d %H:%M:%S')
@@ -75,16 +75,20 @@ class Post(models.Model):
                     rating = 0)
         post.save()
 
-    def like(self, id):
-        rating = Post.rating()
-        rating.save()
+    def like(self):
+        self.rating+=1
+        self.save()
 
     def dislike(self):
-        return self.rating - 1
+        self.rating-=1
+        self.save()
 
     def preview(self, id):
-        post = Post.objects.filter(id = id)
-        return f"{post.values('text')[:124]}..."
+        post = Post.objects.filter(id = id).first()
+        return f"{post.text[:124]}..."
+    
+    def __str__(self):
+        return f'{self.title}'
 
 class PostCategory(models.Model):
     post = models.ForeignKey("Post", on_delete = models.CASCADE)
@@ -94,18 +98,16 @@ class Comment(models.Model):
     post = models.ForeignKey("Post", on_delete = models.CASCADE)
     user = models.ForeignKey("User", on_delete = models.CASCADE)
     text = models.TextField()
-    datetime = models.DateTimeField()
-    rating = models.IntegerField()
+    datetime = models.DateTimeField(auto_now_add=True)
+    rating = models.IntegerField(default=0)
 
     def set_now_time(self):
         return time.strftime('%Y-%m-%d %H:%M:%S')
 
-    rating = models.FloatField()
-
     def like(self):
-        rating = Comment.rating + 1
-        rating.save()
+        self.rating+=1
+        self.save()
 
     def dislike(self):
-        rating = Comment.rating - 1
-        rating.save()
+        self.rating-=1
+        self.save()

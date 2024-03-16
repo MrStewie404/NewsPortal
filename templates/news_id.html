@@ -1,0 +1,28 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/default.html' %} 
+ 
+{% load custom_filters %}
+
+{% block title %}
+News
+{% endblock title %}
+ 
+{% block content %}
+   {% if news %}
+        <table>
+            <tr>
+                <td>
+                    <h3>{{ news }}</h3>
+                    <h5>Дата публикации: {{ news.datetime|date_publicate }}</h5>
+                    <h5>Автор: {{ news.author_id|author_username}}</h5>
+                    <h4>{{ news.text|censor }}</h4>
+                </td>
+            </tr>
+        </table>
+   <!-- Расположить картинку с пейзажем на всю ширину сайта -->
+   {% else %}
+       <!-- Если статей нет, говорим, что статей нет ;) -->
+       <h2>Статья не найдена!</h2>
+        <h5>Проверьте правильность страницы или попробуйте позже!</h5>
+   {% endif %}
+{% endblock content %}
