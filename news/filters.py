@@ -4,12 +4,11 @@ from .models import Post, Category
 
 class PostFilter(FilterSet):
     date = DateFilter(widget=DateInput(attrs={'type': 'date'}))
-    category = ModelChoiceFilter(field_name='category', queryset=Post.objects.all())
+    category = ModelChoiceFilter(field_name='category', queryset=Category.objects.all())
 
     class Meta:
         model = Post
         fields = {
             'title': ['icontains'],
             'category': ['exact'],
-            # 'datetime': ['gte'],
         }

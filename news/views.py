@@ -1,10 +1,11 @@
 # Импортируем класс, который говорит нам о том,
 # что в этом представлении мы будем выводить список объектов из БД
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from django.http import HttpResponse
 from django.shortcuts import render
 from .filters import PostFilter
 from .models import Post
+from .forms import PostForm
 
 
 class PostsList(ListView):
@@ -58,3 +59,10 @@ def page(request):
     html = f"<html><body>{page}</body></html>"
 
     return HttpResponse(html)
+
+
+
+class PostCreate(CreateView):
+    form_class = PostForm
+    model = Post
+    template_name = 'news_create.html'
