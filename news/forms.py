@@ -5,20 +5,18 @@ from .models import Post
 
 
 class PostForm(forms.ModelForm):
-    # description = forms.CharField(min_length=20)
 
     class Meta:
         model = Post
-        fields = ['author', 'category', 'content_type', 'title', 'text']
+        fields = ['author', 'category', 'title', 'text']
+        
 
-    def clean(self): 
+    def clean(self):
         cleaned_data = super().clean()
-        description = cleaned_data.get("description")
-        name = cleaned_data.get("name")
-
-        if name == description:
-            raise ValidationError(
-                "Описание не должно быть идентично названию."
-            )
+        text = cleaned_data.get("text")
+        if text is not None and len(text) < 20:
+            raise ValidationError({
+                "description": "Содержание должно быть не меньше 20 символов."
+            })
 
         return cleaned_data

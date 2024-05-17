@@ -1,6 +1,4 @@
-# TODO Закончить работу над Post().create_post
-# Ошибка: ValueError: Cannot assign "1": "Post.author" must be a "Author" instance.
-
+from django.db.models import Sum
 from django.db import models
 import time
 
@@ -27,18 +25,25 @@ class User(models.Model):
         )
         user.save()
 
+
 class Author(models.Model):
     user = models.OneToOneField("User", on_delete = models.CASCADE)
     rating = models.FloatField()
     def update_rating(self):
-        # rating = Author()
-        # save.rating()
-        # return self.rating + 1
-        ...
+        post_sum = self.post_set.aggregate(postRating=Sum('rating'))
+        temp_sum_p = int(post_sum.get('postRating'))
+        comment_sum = self.user.comment_set.aggregate(commentRating=Sum('rating'))
+        temp_sum_c = int(comment_sum.get('commentRating'))
+
+        self.rating = temp_sum_p * 3 + temp_sum_c
+        self.save()
     
     def create_author(self, id):
         author = Author(rating = 0, user_id = id)
         author.save()
+
+    def __str__(self):
+        return (User(id=1).username)
 
 class Category(models.Model):
     name = models.TextField(unique = True)
@@ -46,6 +51,13 @@ class Category(models.Model):
     def create_category(self, name):
         category = Category(name = name)
         category.save()
+
+    def __str__(self):
+        return self.name
+    
+# class PostCategory(models.Model):
+#     post = models.ForeignKey("Post", on_delete = models.CASCADE)
+#     category = models.ForeignKey("Category", on_delete = models.CASCADE)
 
 class Post(models.Model):
     content_type = models.CharField(max_length = 2,
@@ -89,10 +101,6 @@ class Post(models.Model):
     
     def __str__(self):
         return f'{self.title}'
-
-class PostCategory(models.Model):
-    post = models.ForeignKey("Post", on_delete = models.CASCADE)
-    category = models.ForeignKey("Category", on_delete = models.CASCADE)
 
 class Comment(models.Model):
     post = models.ForeignKey("Post", on_delete = models.CASCADE)
