@@ -5,6 +5,7 @@ from .models import Post, Category
 class PostFilter(FilterSet):
     category = ModelChoiceFilter(
         field_name='category',
+        lookup_expr='exact',
         queryset=Category.objects.all(),
         label='Категория'
     )

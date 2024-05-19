@@ -13,11 +13,13 @@
     {% if filterset.qs %}
         {% for post in filterset.qs %}
             <hr>
-            <h2> <a href="{{post.id}}">{{ post.title }}</a>  | ⭐️ {{ post.rating }}</h2>
+            <h5> <a href="{{post.id}}">{{ post.title }}</a>  | ⭐️ {{ post.rating }}</h5>
             <p>{{ post.text | preview_text}}</p>
         {% endfor %}
     {% else %}
-        <h1 style="padding: 22% 5%">Нет ничего, что соответствовало бы критериям</h1>
+    <h1 style="padding: 15% 5%">Ой 🫢</h1>
+    <h5>По вашему запросу ничего не найдено</h5>
+        
     {% endif %}
 
 

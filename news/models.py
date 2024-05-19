@@ -1,4 +1,5 @@
 from django.db.models import Sum
+from django.urls import reverse
 from django.db import models
 import time
 
@@ -43,7 +44,7 @@ class Author(models.Model):
         author.save()
 
     def __str__(self):
-        return (User(id=1).username)
+        return self.user.username
 
 class Category(models.Model):
     name = models.TextField(unique = True)
@@ -95,12 +96,16 @@ class Post(models.Model):
         self.rating-=1
         self.save()
 
-    def preview(self, id):
-        post = Post.objects.filter(id = id).first()
-        return f"{post.text[:124]}..."
+    def preview(self):
+        # post = Post.objects.filter(id = id).first()
+        return f"{self.text[:124]}{'...' if len(self.text) > 124 else ''}"
     
     def __str__(self):
         return f'{self.title}'
+    
+    def get_absolute_url(self):
+        return reverse('post_detail', kwargs={'pk': self.pk})
+                
 
 class Comment(models.Model):
     post = models.ForeignKey("Post", on_delete = models.CASCADE)

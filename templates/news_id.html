@@ -12,9 +12,11 @@ News
         <table>
             <tr>
                 <td>
+                    <h6>Дата публикации: {{ news.datetime|date_publicate }}</h6>
+                    <h6>Автор: {{ news.author_id|author_username}}</h6>
+                    <hr>
                     <h3>{{ news }}</h3>
-                    <h5>Дата публикации: {{ news.datetime|date_publicate }}</h5>
-                    <h5>Автор: {{ news.author_id|author_username}}</h5>
+                    <hr>
                     <h4>{{ news.text|censor }}</h4>
                 </td>
             </tr>
