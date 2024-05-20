@@ -1,6 +1,7 @@
 # Импортируем класс, который говорит нам о том,
 # что в этом представлении мы будем выводить список объектов из БД
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.shortcuts import render
@@ -10,6 +11,7 @@ from .forms import PostForm
 
 
 class PostsList(ListView):
+    raise_exception = True
     queryset = Post.objects.order_by('datetime')
     template_name = 'news.html'
     context_object_name = 'news'
@@ -61,7 +63,7 @@ class PostDetail(DetailView):
     context_object_name = 'news'
     template_name = 'news_id.html'
 
-class NewsCreate(CreateView):
+class NewsCreate(LoginRequiredMixin, CreateView):
     form_class = PostForm
     model = Post
     template_name = 'news_create.html'
@@ -71,7 +73,7 @@ class NewsCreate(CreateView):
         post.content_type = 'NW'
         return super().form_valid(form)
     
-class ArticleCreate(CreateView):
+class ArticleCreate(LoginRequiredMixin, CreateView):
     form_class = PostForm
     model = Post
     template_name = 'article_create.html'
@@ -81,12 +83,12 @@ class ArticleCreate(CreateView):
         post.content_type = 'AR'
         return super().form_valid(form)
 
-class PostEdit(UpdateView):
+class PostEdit(LoginRequiredMixin, UpdateView):
     form_class = PostForm
     model = Post
     template_name = 'news_edit.html'
 
-class PostDelete(DeleteView):
+class PostDelete(LoginRequiredMixin, DeleteView):
     model = Post
     template_name = 'news_delete.html'
     success_url = reverse_lazy('posts_list')

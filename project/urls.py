@@ -19,6 +19,7 @@ from django.urls import path, include
 urlpatterns = [
    path('admin/', admin.site.urls),
    path('default/', include('django.contrib.flatpages.urls')),
+   path("accounts/", include("allauth.urls")), # Работа с приложением accounts
    # Делаем так, чтобы все адреса из нашего приложения (news/urls.py)
    # подключались к главному приложению с префиксом posts/.
    path('', include('news.urls')),
