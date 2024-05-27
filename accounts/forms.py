@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+# from ..news.models import User as UserTable
 from allauth.account.forms import SignupForm
 from django.contrib.auth.models import Group
 from django.core.mail import EmailMultiAlternatives
@@ -29,6 +30,7 @@ class CustomSignupForm(SignupForm):
         user = super().save(request)
         authors = Group.objects.get(name="authors")
         user.groups.add(authors)
+        # UserTable().create_user(first_name='None', last_name='None', username=user.username)
 
         subject = 'Добро пожаловать в актуальный поток информации!'
         text = f'{user.username}, вы успешно зарегистрировались на сайте!'
