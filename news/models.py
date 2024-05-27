@@ -54,7 +54,7 @@ class Category(models.Model):
         category.save()
 
     def __str__(self):
-        return self.name
+        return self.name.title()
     
 # class PostCategory(models.Model):
 #     post = models.ForeignKey("Post", on_delete = models.CASCADE)
