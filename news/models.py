@@ -1,6 +1,7 @@
 from django.db.models import Sum
 from django.urls import reverse
 from django.db import models
+from django.contrib.auth.models import User as UserModel
 import time
 
 news = 'NE'
@@ -54,7 +55,7 @@ class Category(models.Model):
         category.save()
 
     def __str__(self):
-        return self.name.title()
+        return self.name
     
 # class PostCategory(models.Model):
 #     post = models.ForeignKey("Post", on_delete = models.CASCADE)
@@ -128,7 +129,7 @@ class Comment(models.Model):
 
 class Subscription(models.Model):
     user = models.ForeignKey(
-        to=User,
+        to=UserModel,
         on_delete=models.CASCADE,
         related_name='subscriptions',
     )

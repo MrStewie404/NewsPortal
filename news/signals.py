@@ -6,4 +6,4 @@ from .models import Post
 
 @receiver(post_save, sender=Post)
 def Post_created(instance, **kwargs):
-    print('Создан товар', instance)
+    print('Создан пост', instance)
