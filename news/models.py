@@ -58,9 +58,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
     
-# class PostCategory(models.Model):
-#     post = models.ForeignKey("Post", on_delete = models.CASCADE)
-#     category = models.ForeignKey("Category", on_delete = models.CASCADE)
+class PostCategory(models.Model):
+    post = models.ForeignKey("Post", on_delete = models.CASCADE)
+    category = models.ForeignKey("Category", on_delete = models.CASCADE)
 
 class Post(models.Model):
     content_type = models.CharField(max_length = 2,
@@ -68,7 +68,7 @@ class Post(models.Model):
                                   default = article)
     author = models.ForeignKey("Author", on_delete = models.CASCADE)
     datetime = models.DateTimeField(auto_now_add=True)
-    category = models.ManyToManyField("Category")
+    category = models.ManyToManyField("Category", through='PostCategory')
     title = models.TextField()
     text = models.TextField()
     rating = models.FloatField(default=0)
