@@ -4,7 +4,8 @@ from .views import (
       PostsList, PostDetail,                  
       SearchList, NewsCreate,                  
       ArticleCreate, PostEdit, 
-      PostDelete, subscriptions
+      PostDelete, subscriptions,
+      CategoryList
    )
 
 
@@ -23,5 +24,7 @@ urlpatterns = [
    path('article/<int:pk>/edit/', PostEdit.as_view(), name='post_edit'),
    path('article/<int:pk>/delete/', PostDelete.as_view(), name='post_delete'),
 
+
+   path('categories/<int:pk>', CategoryList.as_view(), name='category_list'),
    path('subscriptions/', subscriptions, name='subscriptions'),
 ]

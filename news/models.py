@@ -49,6 +49,7 @@ class Author(models.Model):
 
 class Category(models.Model):
     name = models.TextField(unique = True)
+    subscribers = models.ManyToManyField(UserModel, related_name='categories')
 
     def create_category(self, name):
         category = Category(name = name)

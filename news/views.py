@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.db.models import Exists, OuterRef
 from django.http import HttpResponse
 from django.urls import reverse_lazy
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .filters import PostFilter
 from .models import Post
 from .models import Subscription, Category
@@ -25,6 +25,11 @@ class PostsList(ListView):
         queryset = super().get_queryset()
         self.filterset = PostFilter(self.request.GET, queryset)
         return self.filterset.qs
+    
+        self.id = resolve(self.request.path_info).kwargs['pk']
+        c = Category.objects.get(id=self.id)
+        queryset = Post.objects.filter(category = c)
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -102,6 +107,21 @@ class PostDelete(PermissionRequiredMixin, DeleteView):
     success_url = reverse_lazy('posts_list')
 
 
+class CategoryList(ListView):
+    model = Post
+    template_name = 'category_list.html'
+    category_object_name = 'category_list'
+
+    def get_queryset(self):
+        self.category = get_object_or_404(Category, id=self.kwargs['pk'])
+        queryset = Post.objects.filter(category=self.category) #.order_by('datetime')
+        return queryset
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_not_subscriber'] = self.request.user not in self.category.subscribers.all()
+        context['category'] = self.category
+        return context
 
 @login_required
 @csrf_protect

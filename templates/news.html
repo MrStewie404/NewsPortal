@@ -18,12 +18,14 @@ News
                             <a href="{{post.id}}">{{ post.title|preview_title }}</a> 
                         </h3>
                         <h6>{{ post.datetime|date:'M d Y' }}</h6>
+                        <!-- {% for category in post.category.all %}
+                            <a href="{% url 'category_list' category.id %}">{{ category }}</a>
+                        {% endfor %} -->
                         <td>{{ post.text|preview_text }}</td> 
                     </td>
                 </tr>
             {% endfor %}
         </table>
-   <!-- Расположить картинку с пейзажем на всю ширину сайта -->
    {% else %}
        <!-- Если статей нет, просим написать ;) -->
        <h2>Статей нет!</h2>
