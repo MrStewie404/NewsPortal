@@ -69,10 +69,11 @@ class Command(BaseCommand):
 
         scheduler.add_job(
             my_job,
-            trigger=CronTrigger(second="*/1",
-                    # day_of_week="fri", 
-                    # hour="18", 
-                    # minute="00"
+            trigger=CronTrigger(
+                    #second="*/1",
+                    day_of_week="fri", 
+                    hour="18", 
+                    minute="00"
                 ),  # Every Friday in 18:00
             id="my_job",  # The `id` assigned to each job MUST be unique
             max_instances=1,
