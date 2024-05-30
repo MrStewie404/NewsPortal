@@ -5,7 +5,7 @@ from .views import (
       SearchList, NewsCreate,                  
       ArticleCreate, PostEdit, 
       PostDelete, subscriptions,
-      CategoryList
+      CategoryList, IndexView,
    )
 
 
@@ -27,6 +27,8 @@ urlpatterns = [
 
    path('categories/<int:pk>', CategoryList.as_view(), name='category_list'),
    path('subscriptions/', subscriptions, name='subscriptions'),
+
+   path('test/', IndexView.as_view(), name='test'),
 ]
 
 

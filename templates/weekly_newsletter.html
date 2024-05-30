@@ -1,0 +1,10 @@
+<html lang="en">
+    <head>
+        <meta chatset="UTF-8">
+        <title>Title</title>
+    <body>
+        {% for post in posts %}
+            <h2><a href="{{ link }}{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+        {% endfor %}
+    </body>
+</head>

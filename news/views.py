@@ -12,6 +12,8 @@ from .filters import PostFilter
 from .models import Post
 from .models import Subscription, Category
 from .forms import PostForm
+from django.views import View
+from .tasks import hello
 
 
 class PostsList(ListView):
@@ -152,3 +154,9 @@ def subscriptions(request):
         'subscriptions.html',
         {'categories': categories_with_subscriptions},
     )
+
+
+class IndexView(View):
+    def get(self, request):
+        hello.delay()
+        return HttpResponse('Hello!')

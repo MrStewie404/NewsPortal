@@ -6,7 +6,7 @@ from django.template.loader import render_to_string
 from project.settings import SITE_URL
 from project import settings
 
-from .models import PostCategory
+from .models import PostCategory, Subscription
 
 
 def send_notification(preview, pk, title, subscribers):
@@ -17,7 +17,6 @@ def send_notification(preview, pk, title, subscribers):
             'link': f'{SITE_URL}/{pk}'
         }
         )
-
     msg = EmailMultiAlternatives(
         subject=title,  
         body='',  
@@ -25,19 +24,22 @@ def send_notification(preview, pk, title, subscribers):
         to=subscribers
     )
 
+    print(msg)
     msg.attach_alternative(html_content,  "text/html")
     msg.send()
+    print("\n"*10+"Message send!")
 
 
 @receiver(m2m_changed, sender=PostCategory)
 def notify_about_new_post(sender, instance, **kwargs):
     if kwargs['action'] == 'post_add':
         categories = instance.category.all()
-        subscribers = list[str] = []
+        print(categories)
+        subscribers = []
         for category in categories:
-            subscribers += category.subscribers.all()
-
-        subscribers = [s.email for s in subscribers]
-        print('test' + subscribers)
+            subscribers += Subscription.objects.filter(category=category).values_list('user__email', flat=True)
+            print(subscribers)
+        subscribers = set(subscribers)
+        print(subscribers)
 
         send_notification(instance.preview(), instance.pk, instance.title, subscribers)
