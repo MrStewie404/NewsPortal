@@ -3,43 +3,41 @@ from django.db.models.signals import m2m_changed
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.template.loader import render_to_string
+from .tasks import send_subs_notification
 from project.settings import SITE_URL
-from project import settings
+# from project import settings
 
 from .models import PostCategory, Subscription
 
 
-def send_notification(preview, pk, title, subscribers):
-    html_content = render_to_string(
-        'post_created_email.html',
-        {
-            'text': preview,
-            'link': f'{SITE_URL}/{pk}'
-        }
-        )
-    msg = EmailMultiAlternatives(
-        subject=title,  
-        body='',  
-        from_email=settings.DEFAULT_FROM_EMAIL,  
-        to=subscribers
-    )
+# def send_notification(preview, pk, title, subscribers):
+#     html_content = render_to_string(
+#         'post_created_email.html',
+#         {
+#             'text': preview,
+#             'link': f'{SITE_URL}/{pk}'
+#         }
+#         )
+#     msg = EmailMultiAlternatives(
+#         subject=title,  
+#         body='',  
+#         from_email=settings.DEFAULT_FROM_EMAIL,  
+#         to=subscribers
+#     )
 
-    print(msg)
-    msg.attach_alternative(html_content,  "text/html")
-    msg.send()
-    print("\n"*10+"Message send!")
+#     print(msg)
+#     msg.attach_alternative(html_content,  "text/html")
+#     msg.send()
+#     print("\n"*10+"Message send!")
 
 
 @receiver(m2m_changed, sender=PostCategory)
 def notify_about_new_post(sender, instance, **kwargs):
     if kwargs['action'] == 'post_add':
         categories = instance.category.all()
-        print(categories)
         subscribers = []
         for category in categories:
             subscribers += Subscription.objects.filter(category=category).values_list('user__email', flat=True)
-            print(subscribers)
         subscribers = set(subscribers)
-        print(subscribers)
 
-        send_notification(instance.preview(), instance.pk, instance.title, subscribers)
+        send_subs_notification(subscribers, instance.preview(), instance.pk, instance.title)

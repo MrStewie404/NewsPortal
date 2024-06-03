@@ -2,5 +2,5 @@ Django==5.0.6
 django-filter==24.2
 requests
 redis
--U "celery[redis]"
+# -U "celery[redis]"
 django-apscheduler==0.6.2

@@ -18,7 +18,7 @@ from news.models import Post, Subscription
 logger = logging.getLogger(__name__)
 
 
-def my_job():
+def send_weekly_news():
     today = datetime.datetime.today()
     last_week = today - datetime.timedelta(days=7)
     posts = Post.objects.filter(datetime__gte=last_week)
@@ -68,18 +68,18 @@ class Command(BaseCommand):
         scheduler.add_jobstore(DjangoJobStore(), "default")
 
         scheduler.add_job(
-            my_job,
+            send_weekly_news,
             trigger=CronTrigger(
                     #second="*/1",
                     day_of_week="fri", 
                     hour="18", 
                     minute="00"
                 ),  # Every Friday in 18:00
-            id="my_job",  # The `id` assigned to each job MUST be unique
+            id="send_weekly_news",  # The `id` assigned to each job MUST be unique
             max_instances=1,
             replace_existing=True,
         )
-        logger.info("Added job 'my_job'.")
+        logger.info("Added job 'send_weekly_news'.")
 
         scheduler.add_job(
             delete_old_job_executions,

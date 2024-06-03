@@ -28,10 +28,10 @@ class PostsList(ListView):
         self.filterset = PostFilter(self.request.GET, queryset)
         return self.filterset.qs
     
-        self.id = resolve(self.request.path_info).kwargs['pk']
-        c = Category.objects.get(id=self.id)
-        queryset = Post.objects.filter(category = c)
-        return queryset
+        # self.id = resolve(self.request.path_info).kwargs['pk']
+        # c = Category.objects.get(id=self.id)
+        # queryset = Post.objects.filter(category = c)
+        # return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -60,12 +60,6 @@ def search(request):
     news_list = Post.objects.all()
     news_filter = PostFilter(request.GET, queryset=news_list)
     return render(request, 'news/search.html', {'filter': news_filter})
-
-
-class WhatCreate(DetailView):
-    model = Post
-    # context_object_name = 'news'
-    template_name = 'create.html'
 
 
 
