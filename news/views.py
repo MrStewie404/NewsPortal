@@ -4,6 +4,8 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
+from django.utils.translation import gettext as _
+from django.utils.translation import pgettext_lazy
 from django.db.models import Exists, OuterRef
 from django.http import HttpResponse
 from django.urls import reverse_lazy
@@ -110,7 +112,7 @@ class CategoryList(ListView):
 
     def get_queryset(self):
         self.category = get_object_or_404(Category, id=self.kwargs['pk'])
-        queryset = Post.objects.filter(category=self.category) #.order_by('datetime')
+        queryset = Post.objects.filter(category=self.category)
         return queryset
     
     def get_context_data(self, **kwargs):
@@ -148,9 +150,9 @@ def subscriptions(request):
         'subscriptions.html',
         {'categories': categories_with_subscriptions},
     )
-
-
-class IndexView(View):
+    
+class Index(View):
     def get(self, request):
-        hello.delay()
-        return HttpResponse('Hello!')
+        string = _('Hello world') 
+   
+        return HttpResponse(string)

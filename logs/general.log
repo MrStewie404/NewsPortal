@@ -1,9 +1,0 @@
-11.06.2024 16-16-38 INFO autoreload Watching for file changes with StatReloader
-11.06.2024 16-16-43 WARNING log Not Found: /092148
-11.06.2024 16-16-43 WARNING basehttp "GET /092148 HTTP/1.1" 404 179
-11.06.2024 16-16-43 WARNING log Not Found: /favicon.ico
-11.06.2024 16-16-45 WARNING log Not Found: /092148
-11.06.2024 16-16-45 WARNING basehttp "GET /092148 HTTP/1.1" 404 179
-11.06.2024 16-16-53 INFO basehttp "GET / HTTP/1.1" 200 5793
-11.06.2024 16-16-53 WARNING log Not Found: /favicon.ico
-11.06.2024 16-16-54 INFO basehttp "GET /1 HTTP/1.1" 200 3553

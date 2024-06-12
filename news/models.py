@@ -2,6 +2,8 @@ from django.db.models import Sum
 from django.urls import reverse
 from django.db import models
 from django.contrib.auth.models import User as UserModel
+from django.utils.translation import gettext as _
+from django.utils.translation import pgettext_lazy # импортируем «ленивый» геттекст с подсказкой
 import time
 
 news = 'NE'
@@ -48,8 +50,7 @@ class Author(models.Model):
         return self.user.username
 
 class Category(models.Model):
-    name = models.TextField(unique = True)
-    subscribers = models.ManyToManyField(UserModel, related_name='categories')
+    name = models.TextField(unique = True, help_text=_('category name'))
 
     def create_category(self, name):
         category = Category(name = name)

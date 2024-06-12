@@ -1,6 +1,7 @@
 <!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
 {% extends 'flatpages/default.html' %} 
- 
+
+{% load i18n %}
 {% load custom_filters %}
 
 {% block title %}
@@ -12,8 +13,8 @@ News
         <table>
             <tr>
                 <td>
-                    <h6>Дата публикации: {{ news.datetime|date_publicate }}</h6>
-                    <h6>Автор: {{ news.author_id|author_username}}</h6>
+                    <h6>{% trans "Дата публикации:" %} {{ news.datetime|date_publicate }}</h6>
+                    <h6>{% trans "Автор:" %} {{ news.author_id|author_username}}</h6>
                     <hr>
                     <h3>{{ news }}</h3>
                     <hr>

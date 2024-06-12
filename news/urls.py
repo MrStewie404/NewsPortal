@@ -6,7 +6,7 @@ from .views import (
       SearchList, NewsCreate,                  
       ArticleCreate, PostEdit, 
       PostDelete, subscriptions,
-      CategoryList, IndexView,
+      CategoryList, Index,
    )
 
 
@@ -16,6 +16,7 @@ urlpatterns = [
    path('search/<int:pk>', PostDetail.as_view(), name='search_detail'),
    path('<int:pk>', cache_page(60*5)(PostDetail.as_view()), name='post_detail'),
    path('<int:pk>/delete/', PostDelete.as_view(), name='post_delete'),
+
 
    path('create/news/', NewsCreate.as_view(), name='news_create'),
    path('news/<int:pk>/edit/', PostEdit.as_view(), name='post_edit'),
@@ -29,7 +30,8 @@ urlpatterns = [
    path('categories/<int:pk>', CategoryList.as_view(), name='category_list'),
    path('subscriptions/', subscriptions, name='subscriptions'),
 
-   path('test/', IndexView.as_view(), name='test'),
+   path('test/', Index.as_view(), name='test'),
+   path('i18n/', include('django.conf.urls.i18n')), # подключаем встроенные эндопинты для работы с локализацией
 ]
 
 
