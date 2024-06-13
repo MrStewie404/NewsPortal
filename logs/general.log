@@ -1,0 +1,77 @@
+2024-06-13 17:04:47,099 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:05:13,310 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:07:20,359 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:08:04,941 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:09:24,626 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:09:25,166 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:10:02,453 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:10:02,949 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:10:45,415 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:10:45,872 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:13:42,574 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:13:43,032 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:16:57,234 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:16:57,784 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:17:15,490 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:17:15,923 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:17:54,267 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:17:54,746 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:17:59,020 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:17:59,303 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:19:24,091 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:19:24,646 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:19:29,918 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:19:30,251 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:19:33,471 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:20:26,464 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:20:30,731 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:20:37,452 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:20:48,901 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:20:49,313 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:22:03,776 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:22:04,271 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:23:06,311 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:23:06,848 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:24:28,583 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:24:29,017 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:25:16,686 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:25:17,205 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:26:02,806 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:26:03,325 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:29:22,898 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:29:23,445 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:29:30,780 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:29:31,214 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:29:38,560 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:29:38,971 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:30:01,834 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:30:02,275 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:32:29,011 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:32:36,110 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:36:03,925 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:36:04,516 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:37:19,992 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:37:20,453 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:37:22,660 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:37:22,950 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:38:39,450 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:38:39,921 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:38:49,391 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:38:49,821 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:38:54,139 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:38:54,427 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:39:40,989 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:39:41,462 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:39:46,771 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:39:47,148 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:40:01,729 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:40:02,200 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:40:13,722 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:40:20,944 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:43:22,982 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:43:23,515 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:43:24,697 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:43:24,969 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:43:40,565 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
+2024-06-13 17:43:41,013 INFO autoreload Watching for file changes with StatReloader
+2024-06-13 17:47:40,531 INFO autoreload /Users/danilculkov/Documents/SkillFactory/Django/Практика/NewsPortal/project/settings.py changed, reloading.
