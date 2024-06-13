@@ -94,7 +94,7 @@ LOGGING = {
             'filename': './logs/general.log'
         },
         'file_security': {
-            'level': 'WARNING',
+            'level': 'DEBUG',
             'filters': ['require_debug_true'],
             'class': 'logging.FileHandler',
             'formatter': 'base_to_file',
