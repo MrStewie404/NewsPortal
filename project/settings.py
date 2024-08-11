@@ -291,6 +291,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# random comment
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -318,7 +319,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
-ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_REQUIRED = True 
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
